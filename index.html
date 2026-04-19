@@ -19,7 +19,7 @@
             transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
-        /* CSS Variables - Dark Mode (default) */
+/* Theme Variables */
         :root {
             --bg-primary: #0a0a0f;
             --bg-secondary: #111118;
@@ -37,21 +37,6 @@
             --card-radius: 20px;
         }
 
-        /* Light Mode */
-        /* body.light-mode {
-            --bg-primary: #f8fafc;
-            --bg-secondary: #ffffff;
-            --bg-card: #ffffff;
-            --text-primary: #1e1e2f;
-            --text-secondary: #4a4a6a;
-            --accent-gold: #c9a03d;
-            --accent-glow: rgba(201, 160, 61, 0.25);
-            --border-light: #e2e8f0;
-            --shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.08);
-            --navbar-bg: rgba(248, 250, 252, 0.94);
-            --footer-bg: #eef2f8;
-            --overlay-bg: rgba(255, 255, 255, 0.85);
-        } */
 
         body {
             font-family: 'Cairo', 'Poppins', sans-serif;
@@ -90,27 +75,8 @@
 
         }
 
-        @keyframes lightMove {
-            0% {
-                background-position: 20% 30%, 80% 70%;
-            }
+    
 
-            50% {
-                background-position: 30% 40%, 70% 60%;
-            }
-
-            100% {
-                background-position: 20% 30%, 80% 70%;
-            }
-        }
-
-        .page-wrapper.light-mode::before {
-            display: none;
-        }
-
-        body[dir="ltr"] {
-            font-family: 'Poppins', 'Cairo', sans-serif;
-        }
 
         /* Custom Scrollbar */
         ::-webkit-scrollbar {
@@ -268,19 +234,6 @@
 
         }
 
-        @keyframes gradientMove {
-            0% {
-                background-position: 0% 50%;
-            }
-
-            50% {
-                background-position: 100% 50%;
-            }
-
-            100% {
-                background-position: 0% 50%;
-            }
-        }
 
         .hero-content {
             flex: 1.2;
@@ -334,10 +287,6 @@
             margin-bottom: 0.5rem;
         }
 
-        body.light-mode .hero h1 {
-            background: none;
-            color: #D4AF37;
-        }
 
         .hero h3 {
             font-size: 1.6rem;
@@ -390,10 +339,12 @@
             transition: 0.35s;
             position: relative;
             transform: translateY(0);
+                cursor: pointer;
+
         }
 
         .card:hover {
-            transform: translateY(-10px) scale(1.02);
+            transform: translateY(-10px) scale(1.03);
             box-shadow: 0 25px 40px -12px rgba(0, 0, 0, 0.4);
         }
 
@@ -759,7 +710,9 @@
                 visual solutions tailored to different projects.
 
                 I believe that design is not just about appearance… it is a message.
+                </p>
 
+        </section>
 
             <section id="designs" class="section">
                 <h2 class="section-title" data-key="designs_title"><span>My</span> Designs</h2>
@@ -876,7 +829,7 @@
             },
 
             {
-                id: "branding",
+                id: "institutional",
                 nameAr: "عمل مؤسسات ",
                 nameEn: "Institutional Work",
                 img: "img/21.png",
@@ -927,7 +880,6 @@
         ================================ */
         let currentLang = 'en';
         let activeCategory = null;
-        let currentTheme = 'dark';
 
         const categoriesGrid = document.getElementById('categoriesGrid');
         const galleryViewDiv = document.getElementById('galleryView');
@@ -940,7 +892,7 @@
 
         const bodyEl = document.body;
         const langToggle = document.getElementById('langToggle');
-        const themeToggle = document.getElementById('themeToggle');
+        
 
         /* ================================
            RENDER CATEGORIES
@@ -1136,18 +1088,7 @@
             });
         }
 
-        /* ================================
-           THEME
-        ================================ */
-        function toggleTheme() {
-            if (currentTheme === 'dark') {
-                bodyEl.classList.add('light-mode');
-                currentTheme = 'light';
-            } else {
-                bodyEl.classList.remove('light-mode');
-                currentTheme = 'dark';
-            }
-        }
+
 
         const feedbacks = [
             { name: "Ali", textEn: "Amazing work!", textAr: "عمل رائع!", stars: 5 },
@@ -1197,7 +1138,6 @@
             });
         });
         langToggle.onclick = toggleLanguage;
-        themeToggle.onclick = toggleTheme;
 
         /* ================================
            INIT
